@@ -89,7 +89,7 @@ body{
 }
 .car-title.title-exit-left{ opacity: 0; transform: translateX(-50%) translateX(-46px); }
 .car-title.title-exit-right{ opacity: 0; transform: translateX(-50%) translateX(46px); }
-.car-title.title-enter-from-right{ opacity: 0; transform: translateX(50%) translateX(46px); transition: none; }
+.car-title.title-enter-from-right{ opacity: 0; transform: translateX(50%) translateX(46px); transition: none;}
 .car-title.title-enter-from-left{ opacity: 0; transform: translateX(-50%) translateX(-46px); transition: none; }
 
 .car-stage{
