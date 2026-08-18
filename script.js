@@ -244,7 +244,7 @@
           carTitle.classList.remove(titleEnter);
         });
       });
-    }, TEXT_SWAP_MS);
+    }, TEXT_SWAP_MS + 400);
 
     swapField(originEl, car.origin, 0);
     swapField(yearsEl, car.years, 40);
