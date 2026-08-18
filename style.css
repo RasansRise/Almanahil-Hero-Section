@@ -1,0 +1,317 @@
+/* ---------- Reset & base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body{ height: 100%; }
+@font-face {
+  font-family: "Monument";
+  src: url(./assets/MonumentExtended-Regular.otf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Monument";
+  src: url(./assets/MonumentExtended-Ultrabold.otf);
+  font-weight: 900;
+}
+:root{
+  --peek-width: clamp(210px, 25vw, 360px);
+  --active-width: clamp(31.25rem, 19.2308rem + 51.2821vw, 100rem);;
+  --transition-fast: 350ms;
+  --transition-slide: 850ms cubic-bezier(.65,0,.35,1);
+  --edge-pad: clamp(20px, 4vw, 56px);
+}
+
+body{
+  font-family: 'Monument', system-ui, sans-serif;
+  color: #2a2a24;
+  overflow-x: hidden;
+}
+
+/* ---------- Slider shell (full-bleed) ---------- */
+.slider{
+  --bg-color: #a89a7f;
+  --accent-color: #e8dcc8;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  transition: background-color 900ms ease;
+  padding: clamp(36px, 6vh, 64px) var(--edge-pad) clamp(40px, 6vh, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Info row ---------- */
+.info-row{
+  display: flex;
+  flex-direction: column;
+  padding-left:20px;
+  padding-bottom:10px;
+  gap:5px;
+  justify-content: space-between;
+  color: var(--accent-color);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+.info{
+  display: inline-block;
+  transition: opacity var(--transition-fast) ease, transform var(--transition-fast) ease;
+}
+.info.fade-out{ opacity: 0; transform: translateY(6px); }
+
+/* ---------- Hero stage (title + car) ---------- */
+.hero-stage{
+  position: relative;
+  flex: 1;
+  min-height: 380px;
+  margin-top: 4px;
+}
+.title-container{
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.car-title{
+  width: 100%;
+  text-align: center;
+  font-family: 'Monument',sans-serif;
+  font-weight: 300;
+  font-size: clamp(3.75rem, 0.035rem + 15.8508vw, 25rem);
+  line-height: 0.84;
+  letter-spacing: -10px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  white-space: nowrap;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 380ms ease, transform 380ms ease;
+}
+.car-title.title-exit-left{ opacity: 0; transform: translateX(-50%) translateX(-46px); }
+.car-title.title-exit-right{ opacity: 0; transform: translateX(-50%) translateX(46px); }
+.car-title.title-enter-from-right{ opacity: 0; transform: translateX(-50%) translateX(46px); transition: none; }
+.car-title.title-enter-from-left{ opacity: 0; transform: translateX(-50%) translateX(-46px); transition: none; }
+
+.car-stage{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  /* transform:translateY(-50%);
+  height: clamp(240px, 40vh, 400px); */
+  z-index: 2;
+  cursor: grab;
+  user-select: none;
+}
+.car-stage:active{ cursor: grabbing; }
+
+/* Edge-anchored: left/width vary per role so the peek cars are genuinely
+   cropped by the viewport edge (overflow:hidden on .slider), not just
+   floating nearby — matching the reference photo where each side car is
+   visibly cut off right at the frame boundary. */
+.car-image{
+  position: absolute;
+  top: 100%;
+  transform: translateY(0%);
+  transition: left var(--transition-slide), width var(--transition-slide), transform var(--transition-slide), opacity var(--transition-slide), filter var(--transition-slide);
+  will-change: left, width, transform, opacity;
+  -webkit-user-drag: none;
+}
+
+/* Used for any jump between two non-adjacent, non-active zones (prev↔next,
+   prev↔hidden-right, next↔hidden-left, hidden-left↔hidden-right) — snaps
+   position instantly, so only the outgoing and incoming cars animate. */
+.car-image.pos-snap{
+  transition: none !important;
+}
+
+.car-image.pos-active{
+  left: 50%;
+  width: var(--active-width);
+  transform: translateY(-50%) translateX(-50%);
+  opacity: 1;
+  filter: none;
+  z-index: 5;
+}
+
+/* About half the car stays visible at each edge, cropped by the viewport
+   boundary — matches the reference photo's side cars. */
+.car-image.pos-prev{
+  left: calc(var(--peek-width) * -0.5);
+  width: var(--peek-width);
+  transform: translateY(-50%);
+  opacity: 0;
+  filter: blur(0.5px);
+  z-index: 3;
+}
+.car-image.pos-next{
+
+  left: calc(100% - var(--peek-width) * 0.5);
+  width: var(--peek-width);
+  transform: translateY(-50%);
+  opacity: 0;
+  filter: blur(0.5px);
+  z-index: 3;
+}
+.car-image.pos-hidden-left{
+  left: calc(var(--peek-width) * -1.3);
+  width: var(--peek-width);
+  transform: translateY(-50%);
+  opacity: 1;
+  filter: blur(1px);
+  z-index: 1;
+  pointer-events: none;
+}
+.car-image.pos-hidden-right{
+  left: calc(100% + var(--peek-width) * 0.3);
+  width: var(--peek-width);
+  transform: translateY(-50%);
+  opacity: 1;
+  filter: blur(1px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---------- Pagination (dotted progress line + ring marker) ---------- */
+.pagination-wrap{
+  position: relative;
+  height: 20px;
+  margin: clamp(10px, 2.5vh, 26px) auto 0;
+  width: 260px;
+  max-width: 70%;
+  display: flex;
+  align-items: center;
+  display: none;
+}
+
+.progress-line{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-50%);
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(255,255,255,0.55) 0px,
+    rgba(255,255,255,0.55) 3px,
+    transparent 3px,
+    transparent 9px
+  );
+}
+
+.pagination{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dot{
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 8px;
+  margin: -8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dot::before{
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+  transition: all 350ms cubic-bezier(.65,0,.35,1);
+}
+.dot:hover::before{ background: rgba(255,255,255,0.85); }
+.dot:focus-visible{ outline: 2px solid rgba(255,255,255,0.9); outline-offset: 3px; border-radius: 50%; }
+
+.dot.active::before{
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  border: 1.5px solid #fdf8e9;
+  box-shadow: inset 0 0 0 5px #fdf8e9;
+}
+
+/* ---------- Description & CTA ---------- */
+.description{
+  max-width: 1420px;
+  margin: clamp(16px, 3vh, 26px) auto 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.26;
+  color: var(--accent-color);
+  transition: opacity var(--transition-fast) ease, transform var(--transition-fast) ease;
+}
+.description.reveal-exit-left{ opacity: 0; transform: translateX(-30px); }
+.description.reveal-exit-right{ opacity: 0; transform: translateX(30px); }
+.description.reveal-enter-from-right{ opacity: 0; transform: translateX(30px); transition: none; }
+.description.reveal-enter-from-left{ opacity: 0; transform: translateX(-30px); transition: none; }
+
+.cta-btn{
+  display: block;
+  margin: clamp(20px, 4vh, 36px) auto 0;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  /* box-shadow: 0 10px 24px -8px rgba(0,0,0,0.35); */
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease, opacity var(--transition-fast) ease;
+}
+.cta-btn.reveal-exit-left{ opacity: 0; transform: translateX(-30px); }
+.cta-btn.reveal-exit-right{ opacity: 0; transform: translateX(30px); }
+.cta-btn.reveal-enter-from-right{ opacity: 0; transform: translateX(30px); transition: none; }
+.cta-btn.reveal-enter-from-left{ opacity: 0; transform: translateX(-30px); transition: none; }
+.cta-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -8px rgba(0,0,0,0.4);
+  background: #ffffff;
+}
+.cta-btn:focus-visible{ outline: 2px solid rgba(255,255,255,0.9); outline-offset: 3px; }
+@media(max-width:1600px ) and (min-width:721px){
+  .car-title{
+    letter-spacing: 0;
+    
+  }
+
+}
+/* ---------- Responsive ---------- */
+@media(max-width:1440px){
+  .title-container{ top: 50%; }
+
+}
+@media (max-width: 720px){
+  :root{ --peek-width: clamp(150px, 34vw, 240px);  }
+  .slider{ padding: 26px 18px clamp(32px,6vh,48px); }
+  .info-row{ font-size: 10.5px;padding-left:0px; letter-spacing: 0.16em; }
+  .hero-stage{ min-height: 320px; }
+  .car-title{
+    letter-spacing: 0;
+  }
+  .description{ font-size: 11.5px; padding: 0 6px; max-width: 600px; }
+}
+
+@media (max-width: 460px){
+  .cta-btn{ padding: 13px 34px; }
+
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  .slider, .car-image, .car-title, .info, .description, .dot::before, .cta-btn{
+    transition-duration: 1ms !important;
+  }
+}

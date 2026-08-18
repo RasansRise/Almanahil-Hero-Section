@@ -1,0 +1,58 @@
+<svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fiatBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0c34e"/>
+      <stop offset="55%" stop-color="#dba82a"/>
+      <stop offset="100%" stop-color="#a87d16"/>
+    </linearGradient>
+    <linearGradient id="fiatGlass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3ecd2" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#c9ad70" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="fiatTire" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#3a3a36"/>
+      <stop offset="100%" stop-color="#141412"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="270" cy="260" rx="192" ry="13" fill="#000000" opacity="0.16"/>
+
+  <path d="M70 224 C52 224 46 198 60 184
+           C68 138 96 78 144 62
+           C176 48 210 46 270 46
+           C320 46 366 56 400 82
+           C432 106 452 146 458 184
+           C474 198 468 224 450 224 Z" fill="url(#fiatBody)"/>
+  <path d="M104 96 C144 66 200 56 270 56 C328 56 376 68 410 92
+           C374 74 322 66 270 66 C214 66 158 76 104 96Z" fill="#ffffff" opacity="0.18"/>
+  <path d="M84 196 C130 210 410 210 452 192 C428 214 358 224 270 224 C188 224 116 216 84 196Z" fill="#000000" opacity="0.14"/>
+
+  <path d="M158 178 C170 122 210 92 270 92 C330 92 372 124 384 178
+           L 362 194 L 180 194 Z" fill="url(#fiatGlass)"/>
+  <line x1="270" y1="96" x2="270" y2="194" stroke="#8a621a" stroke-width="3"/>
+  <path d="M104 156 C170 172 372 172 438 152" fill="none" stroke="#a97e22" stroke-width="2.5" opacity="0.55"/>
+
+  <circle cx="150" cy="158" r="11" fill="#fbf3de"/>
+  <circle cx="150" cy="158" r="5" fill="#4d3a12"/>
+  <circle cx="392" cy="158" r="11" fill="#fbf3de"/>
+  <circle cx="392" cy="158" r="5" fill="#4d3a12"/>
+
+  <rect x="60" y="196" width="26" height="9" rx="4.5" fill="#dcd6bf"/>
+  <rect x="436" y="196" width="26" height="9" rx="4.5" fill="#dcd6bf"/>
+
+  <rect x="112" y="130" width="10" height="18" rx="2" fill="#3a2c10" opacity="0.7"/>
+  <rect x="418" y="130" width="10" height="18" rx="2" fill="#3a2c10" opacity="0.7"/>
+  <path d="M182 108 L168 100 L168 112 Z" fill="#5c440f"/>
+  <rect x="246" y="198" width="48" height="13" rx="2" fill="#eef0e4" stroke="#9c7a24" stroke-width="1"/>
+
+  <g>
+    <circle cx="168" cy="252" r="34" fill="url(#fiatTire)"/>
+    <circle cx="168" cy="252" r="34" fill="none" stroke="#4a4a44" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.5"/>
+    <circle cx="168" cy="252" r="15" fill="#d9cd97"/>
+    <circle cx="168" cy="252" r="4.5" fill="#8f7d3c"/>
+    <circle cx="374" cy="252" r="34" fill="url(#fiatTire)"/>
+    <circle cx="374" cy="252" r="34" fill="none" stroke="#4a4a44" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.5"/>
+    <circle cx="374" cy="252" r="15" fill="#d9cd97"/>
+    <circle cx="374" cy="252" r="4.5" fill="#8f7d3c"/>
+  </g>
+</svg>

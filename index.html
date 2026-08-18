@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classic Microcars — Hero Slider</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="slider" id="slider" aria-roledescription="carousel" aria-label="Classic Microcars">
+
+  <!-- <div class="info-row">
+    <span class="info origin" id="origin"></span>
+    <span class="info years" id="years"></span>
+  </div> -->
+
+  <div class="hero-stage">
+    <div class="title-container">
+      <div class="info-row">
+        <span class="info origin" id="origin"></span>
+        <span class="info years" id="years"></span>
+      </div>
+      <h1 class="car-title" id="carTitle" aria-live="polite"></h1>
+    </div>
+    <div class="car-stage" id="carStage"></div>
+  </div>
+
+  <div class="pagination-wrap">
+    <div class="progress-line"></div>
+    <div class="pagination" id="pagination" role="tablist" aria-label="Choose a car"></div>
+  </div>
+
+  <p class="description" id="description"></p>
+
+  <button class="cta-btn" type="button">DISCOVER</button>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

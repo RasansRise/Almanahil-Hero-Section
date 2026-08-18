@@ -1,0 +1,59 @@
+<svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="miniBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c85148"/>
+      <stop offset="55%" stop-color="#a52e26"/>
+      <stop offset="100%" stop-color="#75160f"/>
+    </linearGradient>
+    <linearGradient id="miniGlass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2ecda" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#c9b195" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="miniTire" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#3a3a36"/>
+      <stop offset="100%" stop-color="#121210"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="270" cy="258" rx="196" ry="13" fill="#000000" opacity="0.16"/>
+
+  <path d="M58 218 C42 218 36 192 50 178
+           C58 128 88 74 132 56
+           C170 40 214 36 270 36
+           C320 36 366 42 404 62
+           C444 82 470 130 480 178
+           C494 192 488 218 470 218 Z" fill="url(#miniBody)"/>
+  <path d="M96 88 C138 58 200 46 270 46 C326 46 372 56 404 74
+           C368 58 316 50 270 50 C210 50 152 62 96 88Z" fill="#ffffff" opacity="0.14"/>
+  <path d="M74 190 C126 206 414 206 456 186 C430 210 356 218 270 218 C182 218 104 210 74 190Z" fill="#000000" opacity="0.16"/>
+
+  <!-- white roof stripe -->
+  <path d="M172 60 C200 44 234 38 270 38 C306 38 340 44 368 60
+           C338 74 306 82 270 82 C234 82 202 74 172 60Z" fill="#f4efe1"/>
+  <rect x="256" y="38" width="28" height="176" fill="#f4efe1" opacity="0.45"/>
+
+  <path d="M138 184 C150 122 196 90 270 90 C344 90 390 124 402 184
+           L 378 200 L 162 200 Z" fill="url(#miniGlass)"/>
+  <line x1="270" y1="94" x2="270" y2="200" stroke="#5a120c" stroke-width="3"/>
+
+  <circle cx="140" cy="158" r="11" fill="#fbf6e6"/>
+  <circle cx="140" cy="158" r="5" fill="#3c0e08"/>
+  <circle cx="400" cy="158" r="11" fill="#fbf6e6"/>
+  <circle cx="400" cy="158" r="5" fill="#3c0e08"/>
+
+  <rect x="46" y="192" width="28" height="9" rx="4.5" fill="#dcd6c4"/>
+  <rect x="446" y="192" width="28" height="9" rx="4.5" fill="#dcd6c4"/>
+  <path d="M172 118 L158 108 L158 122 Z" fill="#5c120c"/>
+  <rect x="242" y="204" width="52" height="14" rx="2" fill="#eef0e4" stroke="#7a1811" stroke-width="1"/>
+
+  <g>
+    <circle cx="162" cy="250" r="38" fill="url(#miniTire)"/>
+    <circle cx="162" cy="250" r="38" fill="none" stroke="#4a4a44" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.5"/>
+    <circle cx="162" cy="250" r="17" fill="#e7ddbb"/>
+    <circle cx="162" cy="250" r="5" fill="#8f6f3c"/>
+    <circle cx="378" cy="250" r="38" fill="url(#miniTire)"/>
+    <circle cx="378" cy="250" r="38" fill="none" stroke="#4a4a44" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.5"/>
+    <circle cx="378" cy="250" r="17" fill="#e7ddbb"/>
+    <circle cx="378" cy="250" r="5" fill="#8f6f3c"/>
+  </g>
+</svg>

@@ -1,0 +1,63 @@
+<svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="isettaBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9fac7e"/>
+      <stop offset="52%" stop-color="#7c8a5f"/>
+      <stop offset="100%" stop-color="#5c6844"/>
+    </linearGradient>
+    <linearGradient id="isettaGlass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eef4ea" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#a9bfa1" stop-opacity="0.55"/>
+    </linearGradient>
+    <radialGradient id="isettaTire" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#3a3a36"/>
+      <stop offset="100%" stop-color="#151513"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="270" cy="256" rx="165" ry="13" fill="#000000" opacity="0.16"/>
+
+  <path d="M140 236 C104 236 90 182 104 128
+           C118 62 172 34 270 34
+           C368 34 422 62 436 128
+           C450 182 436 236 400 236 Z" fill="url(#isettaBody)"/>
+  <path d="M150 78 C190 46 232 38 270 38 C310 38 352 46 392 78
+           C356 58 314 50 270 50 C228 50 188 58 150 78Z" fill="#ffffff" opacity="0.16"/>
+  <path d="M118 210 C160 224 380 224 422 208 C400 226 340 236 270 236 C202 236 142 226 118 210Z" fill="#000000" opacity="0.14"/>
+
+  <path d="M188 168 C188 106 224 68 270 68 C316 68 352 106 352 168 L 332 182 L 208 182 Z" fill="url(#isettaGlass)"/>
+  <line x1="270" y1="72" x2="270" y2="182" stroke="#48512f" stroke-width="3"/>
+  <circle cx="270" cy="82" r="4" fill="#3c4527"/>
+  <rect x="264" y="150" width="12" height="6" rx="2" fill="#e9e2c4"/>
+
+  <path d="M108 150 C180 168 360 168 432 150" fill="none" stroke="#4c5636" stroke-width="2.5" opacity="0.55"/>
+
+  <circle cx="126" cy="146" r="10" fill="#f7efd6"/>
+  <circle cx="126" cy="146" r="4.5" fill="#4a4a3f"/>
+  <circle cx="414" cy="146" r="10" fill="#f7efd6"/>
+  <circle cx="414" cy="146" r="4.5" fill="#4a4a3f"/>
+
+  <rect x="108" y="196" width="20" height="10" rx="5" fill="#d9d3ba"/>
+  <rect x="392" y="196" width="20" height="10" rx="5" fill="#d9d3ba"/>
+  <rect x="248" y="200" width="44" height="13" rx="2" fill="#eef0e4" stroke="#7a8161" stroke-width="1"/>
+
+  <line x1="200" y1="42" x2="340" y2="42" stroke="#4a4132" stroke-width="3" opacity="0.85"/>
+  <g transform="translate(228,18) rotate(-3)">
+    <rect x="0" y="0" width="64" height="30" rx="3" fill="#c9793b"/>
+    <rect x="0" y="0" width="64" height="30" rx="3" fill="none" stroke="#93511f" stroke-width="2"/>
+    <line x1="16" y1="0" x2="16" y2="30" stroke="#93511f" stroke-width="1.5"/>
+    <line x1="32" y1="0" x2="32" y2="30" stroke="#93511f" stroke-width="1.5"/>
+    <line x1="48" y1="0" x2="48" y2="30" stroke="#93511f" stroke-width="1.5"/>
+  </g>
+
+  <g>
+    <circle cx="188" cy="248" r="32" fill="url(#isettaTire)"/>
+    <circle cx="188" cy="248" r="32" fill="none" stroke="#4a4a44" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.5"/>
+    <circle cx="188" cy="248" r="14" fill="#cfc9ae"/>
+    <circle cx="188" cy="248" r="4" fill="#8c8768"/>
+    <circle cx="352" cy="248" r="32" fill="url(#isettaTire)"/>
+    <circle cx="352" cy="248" r="32" fill="none" stroke="#4a4a44" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.5"/>
+    <circle cx="352" cy="248" r="14" fill="#cfc9ae"/>
+    <circle cx="352" cy="248" r="4" fill="#8c8768"/>
+  </g>
+</svg>
